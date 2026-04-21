@@ -12,11 +12,11 @@
   position: relative;
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: flex-start;
   width: 1440px;
-  height: 1312px;
+  min-height: 1312px;
   margin-top: 2px;
-  background-color: #f7f6b9;
+  background-color: #f7f6f6;
 }
 
 .main_frame .left_frame {
@@ -24,7 +24,8 @@
   display: flex;
   flex-direction: column;
   width: 305px;
-  height: 1315px;
+  min-height: 1315px;
+  padding-bottom: 30px;
   background-color: white;
 }
 
@@ -33,7 +34,7 @@
   display: flex;
   flex-direction: column;
   width: 970px;
-  height: 1259px;
+  min-height: 1259px;
   margin-right: 27px;
   margin-left: 30px;
 }
@@ -43,9 +44,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  align-items: center;
+  gap: 6px;
   width: 108px;
-  height: 1315px;
+  min-height: 1315px;
+  padding-top: 14px;
   background-color: white;
 }
 
@@ -64,9 +66,11 @@
 .main_frame .left_1 .left_1-1 {
   position: relative;
   display: flex;
+  overflow: hidden;
   flex-direction: column;
   width: 156.16px;
   height: 142.53px;
+  border-radius: 50%;
   margin-bottom: 29.46px;
 }
 
@@ -74,51 +78,43 @@
   position: relative;
   width: 220px;
   height: 0px;
+  border: 1.5px solid #f0f0f0;
   margin-top: 39px;
   margin-bottom: 25px;
   margin-left: 40px;
-
-  /*background*/
-  border: 1.5px solid #f0f0f0;
 }
 
 .main_frame .left_2 {
   position: relative;
   width: 221px;
-  height: 126px;
+  height: auto;
   margin-left: 44px;
 }
 
 .left_1-2 {
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 66.63px;
   height: 20.9px;
   margin-bottom: 6.65px;
-
-  /* H4 -18px */
   font-family: sans-serif;
   font-size: 18px;
   font-weight: 500;
   font-style: normal;
   line-height: 123.6%;
-
-  /* or 22px */
-  display: flex;
-  justify-content: center;
-  align-items: center;
   text-transform: capitalize;
-
-  /* black */
+  white-space: nowrap;
   color: #2b2b2b;
 }
 
 .main_frame .left_frame .left_3 {
   position: relative;
   width: 220px;
-  height: 153px;
+  height: auto;
   margin-top: 25px;
   margin-left: 45px;
-  background-color: aqua;
 }
 
 .main_frame .left_frame .left_1-3 {
@@ -128,36 +124,483 @@
   align-items: center;
   width: 147.84px;
   height: 25.65px;
-
-  /* Paragraph progress -15 */
   font-family: sans-serif;
   font-size: 15px;
   font-weight: normal;
   font-style: normal;
   line-height: 24px;
-
-  /* or 160% */
   text-transform: capitalize;
-  font-feature-settings: "calt" off, "kern" off;
-
-  /* Paragraph Font */
   color: #767676;
+  font-feature-settings: "calt" off, "kern" off;
 }
 
 .main_frame .left_frame .left_4 {
   position: relative;
   width: 220px;
-  height: 252px;
+  height: auto;
   margin-top: 25px;
   margin-left: 45px;
-  background-color: aqua;
 }
 
 .main_frame .left_frame .left_5 {
   position: relative;
   width: 186px;
-  height: 148px;
+  height: auto;
   margin-top: 25px;
   margin-left: 45px;
-  background-color: aqua;
+}
+
+.left_icons {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.link_href {
+  text-decoration: none;
+}
+
+.icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background-color: #c8c8c8;
+  transition: background-color 0.2s;
+  cursor: pointer;
+}
+
+.icon:hover {
+  background-color: #f5a623;
+}
+
+.icon img {
+  width: 13px;
+  height: 13px;
+  object-fit: contain;
+}
+
+/* ---------- Info badges (left_2) ---------- */
+
+.info_row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+  font-family: sans-serif;
+  font-size: 12px;
+}
+
+.info_label {
+  min-width: 72px;
+  padding: 3px 10px;
+  border-radius: 3px;
+  font-size: 11px;
+  font-weight: 500;
+  color: #ffffff;
+  background-color: #f5a623;
+}
+
+.info_value {
+  font-size: 12px;
+  color: #555;
+}
+
+.info_value.available {
+  font-weight: 600;
+  color: #4caf50;
+}
+
+/* ---------- Skill bars (left_3, left_4) ---------- */
+
+.skill_section_title {
+  margin-bottom: 14px;
+  font-family: sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #2b2b2b;
+}
+
+.skill_item {
+  margin-bottom: 10px;
+}
+
+.skill_header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 4px;
+  font-family: sans-serif;
+  font-size: 12px;
+  color: #767676;
+}
+
+.skill_bar {
+  overflow: hidden;
+  width: 100%;
+  height: 3px;
+  border-radius: 2px;
+  background-color: #f0f0f0;
+}
+
+.skill_fill {
+  height: 100%;
+  border-radius: 2px;
+  background-color: #f5a623;
+}
+
+/* ---------- Extra Skills (left_5) ---------- */
+
+.extra_skills_list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.extra_skills_list li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: sans-serif;
+  font-size: 12px;
+  color: #767676;
+}
+
+.dot {
+  display: inline-block;
+  flex-shrink: 0;
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+  background-color: #f5a623;
+}
+
+/* ---------- Download CV Button ---------- */
+
+.download_wrap {
+  margin-top: 10px;
+  margin-left: 45px;
+}
+
+.download_btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 20px;
+  border-radius: 4px;
+  font-family: sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #ffffff;
+  background-color: #f5a623;
+  transition: background-color 0.2s;
+}
+
+.download_btn:hover {
+  color: #fff;
+  background-color: #d9900f;
+}
+
+/* ================================================
+   MIDDLE FRAME — HERO SECTION
+   ================================================ */
+
+.hero_section {
+  position: relative;
+  display: flex;
+  overflow: hidden;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 40px 44px;
+  border-radius: 4px;
+  margin-top: 28px;
+  background-color: #ffffff;
+}
+
+.hero_text {
+  z-index: 2;
+  flex: 1;
+}
+
+.hero_text h1 {
+  margin-bottom: 14px;
+  font-family: sans-serif;
+  font-size: 28px;
+  font-weight: 800;
+  line-height: 1.25;
+  color: #1a1a1a;
+}
+
+.hero_text p {
+  max-width: 320px;
+  margin-bottom: 24px;
+  font-family: sans-serif;
+  font-size: 12px;
+  line-height: 1.8;
+  color: #aaa;
+}
+
+.hire_btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 26px;
+  border-radius: 4px;
+  font-family: sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #ffffff;
+  background-color: #f5a623;
+  transition: background-color 0.2s;
+}
+
+.hire_btn:hover {
+  color: #fff;
+  background-color: #d9900f;
+}
+
+/* Hero image side */
+
+.hero_image {
+  position: relative;
+  z-index: 2;
+  flex-shrink: 0;
+  width: 220px;
+}
+
+.hero_img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  object-position: top center;
+}
+
+/* Decorative floating shapes */
+
+.deco {
+  position: absolute;
+  pointer-events: none;
+}
+
+.deco_circle_green {
+  width: 14px;
+  height: 14px;
+  border: 2px solid #82c87a;
+  border-radius: 50%;
+}
+
+.deco_square_blue {
+  width: 12px;
+  height: 12px;
+  border: 2px solid #7ab4d8;
+  transform: rotate(20deg);
+}
+
+.deco_circle_fill {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #82c87a;
+}
+
+.deco_triangle {
+  width: 0;
+  height: 0;
+  border-right: 7px solid transparent;
+  border-bottom: 12px solid #e07070;
+  border-left: 7px solid transparent;
+}
+
+.deco_circle_yellow {
+  width: 12px;
+  height: 12px;
+  border: 2px solid #f5a623;
+  border-radius: 50%;
+}
+
+.deco_square_sm {
+  width: 10px;
+  height: 10px;
+  border: 2px solid #7ab4d8;
+  transform: rotate(15deg);
+}
+
+/* top-right corner half-circle badge */
+
+.hero_corner_badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 3;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: conic-gradient(#2b2b2b 0deg 180deg, #f5a623 180deg 360deg);
+}
+
+/* ================================================
+   MIDDLE FRAME — SERVICES SECTION
+   ================================================ */
+
+.services_section {
+  padding: 40px 36px 46px;
+  margin-top: 28px;
+  background-color: #f5f5f8;
+}
+
+.services_header {
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.services_header h2 {
+  margin-bottom: 12px;
+  font-family: sans-serif;
+  font-size: 26px;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+.services_header p {
+  font-family: sans-serif;
+  font-size: 12px;
+  line-height: 1.9;
+  color: #aaa;
+}
+
+/* Service cards */
+
+.service_card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  padding: 28px 22px;
+  border-radius: 6px;
+  text-align: center;
+  background-color: #ffffff;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.service_card:hover {
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.08);
+  transform: translateY(-3px);
+}
+
+.service_icon {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 16px;
+}
+
+.service_icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.service_card h3 {
+  margin-bottom: 6px;
+  font-family: sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #2b2b2b;
+}
+
+.service_card p {
+  margin: 0;
+  font-family: sans-serif;
+  font-size: 11.5px;
+  line-height: 1.6;
+  color: #aaa;
+}
+
+/* Advertising card — text only, left aligned */
+
+.service_card_advertising {
+  align-items: flex-start;
+  text-align: left;
+}
+
+.service_card_advertising h3 {
+  margin-bottom: 10px;
+}
+
+.service_card_advertising p {
+  margin-bottom: 16px;
+}
+
+.order_now_btn {
+  font-family: sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #f5a623;
+  transition: color 0.2s;
+}
+
+.order_now_btn:hover {
+  color: #d9900f;
+}
+
+/* ================================================
+   RIGHT FRAME — NAV ICONS
+   ================================================ */
+
+.right_nav_label {
+  padding: 4px 10px;
+  border-radius: 3px;
+  margin-bottom: 6px;
+  font-family: sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: #888;
+  background-color: #f5f5f5;
+}
+
+.right_nav_icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 6px;
+  text-decoration: none;
+  background-color: #f5f5f5;
+  transition: background-color 0.2s;
+}
+
+.right_nav_icon img {
+  width: 18px;
+  height: 18px;
+  filter: invert(60%);
+}
+
+.right_nav_icon:hover,
+.right_nav_icon.active {
+  background-color: #f5a623;
+}
+
+.right_nav_icon.active img,
+.right_nav_icon:hover img {
+  filter: invert(100%);
 }
