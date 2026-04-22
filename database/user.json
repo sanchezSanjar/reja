@@ -1,12 +1,23 @@
 {
   "name": "Steve",
-  "profession": "software Engineer",
+  "profession": "Software Engineer",
   "age": 20,
   "residence": "S.Korea",
+  "freelance": "Available",
   "address": "S.Korea, Busan",
-  "language": ["Uzbek", "Korean", "English"],
-  "skills": ["Html", "Css", "Js", "NodeJS", "Python"],
-  "extra_skills": [
+  "languages": [
+    { "name": "Uzbek",   "level": 90 },
+    { "name": "Korean",  "level": 70 },
+    { "name": "English", "level": 80 }
+  ],
+  "skills": [
+    { "name": "Html",   "level": 90 },
+    { "name": "CSS",    "level": 85 },
+    { "name": "Js",     "level": 80 },
+    { "name": "NodeJS", "level": 75 },
+    { "name": "Python", "level": 70 }
+  ],
+  "extraSkills": [
     "Bootstrap, Materialize",
     "Styling, Sass",
     "Django, Flask",
@@ -14,36 +25,6 @@
   ],
   "work_place": "IT Company",
   "service_desc": "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.",
-  "about_me": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-  "city": "Daegu",
-  "title": ["Flower", "Seedlings", "Gardner", "Old", "New"],
-  "flower_desc": [
-    "What is a Flower?",
-    "What is a Seedling?",
-    "Who is Gardner?"
-  ],
-  "flower_name": [
-    "Tulip",
-    "Daffodil",
-    "Poopy",
-    "Sunflower",
-    "Bluebull",
-    "Rose",
-    "Snowdrop",
-    "Cherry",
-    "blossom"
-  ],
-  "flower_price": [
-    "15$",
-    "25$",
-    "12$",
-    "20$",
-    "35$",
-    "22$",
-    "19$",
-    "9$",
-    "18$"
-  ],
-  "flamous_words": ["World is Beautiful with Flowers"],
-  "famous_name": [""]
+  "about_me": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+  "city": "Daegu"
 }
