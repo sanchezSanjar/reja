@@ -1,9 +1,9 @@
 console.log("Web Serverni boshlash");
 const express = require("express");
-const app = express();                    // ✅ removed bad: const res = require("express/lib/response")
+const app = express();
 const http = require("http");
 const fs = require("fs");
-const path = require("path");             // ✅ added path module
+const path = require("path");
 
 let user;
 fs.readFile("database/user.json", "utf8", (err, data) => {
@@ -15,14 +15,14 @@ fs.readFile("database/user.json", "utf8", (err, data) => {
 });
 
 // 1: Kirish code
-app.use(express.static(path.join(__dirname, "public")));  // ✅ fixed static path
+app.use(express.static(path.join(__dirname, "public")));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // 2: Session code
 
 // 3: Views code
-app.set("views", path.join(__dirname, "views"));          // ✅ fixed views path
+app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
 // 4: Routing code
