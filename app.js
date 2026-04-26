@@ -13,17 +13,37 @@ app.use(express.urlencoded({ extended: true }));
 
 // 2: Session code
 
-// 3: Views code
+// 3: Views codec
+
 app.set("views", "views");
 app.set("view engine", "ejs");
 
 // 4: Routing code
 app.post("/create-item", (req, res) => {
-  // TODO: code with DB here
+  console.log("user entered /create-item");
+  const new_reja = req.body.reja;
+  db.collection("plans").insertOne({ reja: new_reja }, (err, data) => {
+    if (err) {
+      console.log(err);
+      res.end("something went wronf");
+    } else {
+      res.end("successfully added");
+    }
+  });
 });
 
 app.get("/", function (req, res) {
-  res.render("reja");
+  console.log("user entered /");
+  db.collection("plans")
+    .find()
+    .toArray((err, data) => {
+      if (err) {
+        console.log(err);
+        res.end("something went wrong");
+      } else {
+        res.render("reja", { items: data });
+      }
+    });
 });
 
 module.exports = app;
