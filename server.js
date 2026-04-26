@@ -1,34 +1,30 @@
-console.log("Web Serverni boshlash");
-const express = require("express");
-const res = require("express/lib/response");
-const app = express();
 const http = require("http");
+const mongodb = require("mongodb");
 
-// 1: Kirish code
-app.use(express.static("public"));
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+let db;
 
-// 2: Session code
+const connectionString =
+  "mongodb+srv://sanchez:3MdMF6hB4YKloWgA@cluster0.imuv4gc.mongodb.net/?appName=Cluster0/REJA";
 
-// 3: Views code
-app.set("views", "views");
-app.set("view engine", "ejs");
+mongodb.connect(
+  connectionString,
 
-// 4: Routing code
-app.post("/create-item", (req, res) => {
-  // TODO: code with DB here
-});
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  },
+  (err, client) => {
+    if (err) console.log("ERROR on connection MongoDB");
+    else {
+      console.log("✅ MongoDB connection succeed");
+      module.exports = client;
 
-app.get("/", function (req, res) {
-  res.render("reja");
-});
-
-const server = http.createServer(app);
-let PORT = 3001;
-
-server.listen(PORT, function () {
-  console.log(
-    `The server is running successfully on port: ${PORT}, http://localhost:${PORT}`
-  );
-});
+      const app = require("./app");
+      const server = http.createServer(app);
+      let PORT = 3001;
+      server.listen(PORT, function () {
+        console.log(`✅ Server running on http://localhost:${PORT}`);
+      });
+    }
+  }
+);
