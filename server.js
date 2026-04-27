@@ -1,30 +1,32 @@
 const http = require("http");
-const mongodb = require("mongodb");
+const { MongoClient } = require("mongodb"); // ✅ correct import
 
 let db;
 
-const connectionString =
-  "mongodb+srv://sanchez:qNRrL6g3Fj6GrHzE@cluster0.iaq75mr.mongodb.net/?retryWrites=true&w=majority";
+const user = encodeURIComponent("sanchez");
+const password = encodeURIComponent("qNRrL6g3Fj6GrHzE");
+const cluster = "cluster0.iaq75mr.mongodb.net";
+const connectionString = `mongodb+srv://${user}:${password}@${cluster}/?retryWrites=true&w=majority`; // ✅ template literal avoids hidden character issues
 
-mongodb.connect(
-  connectionString,
+async function start() {
+  try {
+    const client = await MongoClient.connect(connectionString);
+    console.log("✅ MongoDB connection succeed");
 
-  {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  },
-  (err, client) => {
-    if (err) console.log("ERROR on connection MongoDB");
-    else {
-      console.log("✅ MongoDB connection succeed");
-      module.exports = client;
+    db = client.db("Reja"); // ✅ get db
 
-      const app = require("./app");
-      const server = http.createServer(app);
-      let PORT = 3001;
-      server.listen(PORT, function () {
-        console.log(`✅ Server running on http://localhost:${PORT}`);
-      });
-    }
+    const app = require("./app");
+    app.locals.db = db; // ✅ pass db to app correctly
+
+    const server = http.createServer(app);
+    let PORT = 3001;
+    server.listen(PORT, function () {
+      console.log(`✅ Server running on http://localhost:${PORT}`);
+    });
+  } catch (err) {
+    console.log("❌ ERROR:", err.message);
+    process.exit(1);
   }
-);
+}
+
+start();
