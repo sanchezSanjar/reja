@@ -1,12 +1,12 @@
 const http = require("http");
-const { MongoClient } = require("mongodb"); // ✅ correct import
+const { MongoClient } = require("mongodb"); //
 
 let db;
 
 const user = encodeURIComponent("sanchez");
 const password = encodeURIComponent("qNRrL6g3Fj6GrHzE");
 const cluster = "cluster0.iaq75mr.mongodb.net";
-const connectionString = `mongodb+srv://${user}:${password}@${cluster}/?retryWrites=true&w=majority`; // ✅ template literal avoids hidden character issues
+const connectionString = `mongodb+srv://${user}:${password}@${cluster}/?retryWrites=true&w=majority`;
 
 async function start() {
   try {
@@ -19,7 +19,7 @@ async function start() {
     app.locals.db = db; // ✅ pass db to app correctly
 
     const server = http.createServer(app);
-    let PORT = 3001;
+    let PORT = 3002;
     server.listen(PORT, function () {
       console.log(`✅ Server running on http://localhost:${PORT}`);
     });
