@@ -1,11 +1,5 @@
 //MIT ALGORITHM TASK 2
 
-<<<<<<< HEAD
-function countDigits(str) {
-  return Array.from(str).filter((ch) => ch >= "0" && ch <= "9").length;
-}
-console.log(countDigits("545hjhljlkjlkhgf45454h45"));
-=======
 // function countLetter(letter, word) {
 //   let count = 0;
 //   for (let char of word) {
@@ -126,16 +120,23 @@ console.log(countDigits("545hjhljlkjlkhgf45454h45"));
 
 // MIT ALGORITHM TASK F 
 
-function findDoublers(str) {
-  const seen = new Set();
-  for (const ch of str) {
-    if (seen.has(ch)) return true;
-    seen.add(ch);
-  }
-  return false;
-}
+// function findDoublers(str) {
+//   const seen = new Set();
+//   for (const ch of str) {
+//     if (seen.has(ch)) return true;
+//     seen.add(ch);
+//   }
+//   return false;
+// }
 
-// misol
-console.log(findDoublers("hello")); // true
-console.log(findDoublers("world")); // false
->>>>>>> 968ed1c (feat: task F)
+// // misol
+// console.log(findDoublers("hello")); // true
+// console.log(findDoublers("world")); // false
+
+// MIT ALGORITHM TASK G  
+
+function getHighestIndex(arr) {
+  const max = Math.max(...arr);
+  return arr.indexOf(max);
+}
+console.log(getHighestIndex([5, 21, 12, 21, 8]));
