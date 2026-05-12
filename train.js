@@ -143,6 +143,9 @@
 
 // MIT ALGORITHM TASK H-TASK
 
-// Shunday function tuzing, u integerlardan iborat arrayni argument sifatida qabul qilib, 
-// faqat positive qiymatlarni olib string holatda return qilsin. 
-// MASALAN: getPositive([1, -4, 2]) return qiladi "12".
+function getPositive(arr) {
+  return arr.filter(num => num > 0).join('');
+}
+
+// Test
+console.log(getPositive([1, -4, 2]));      // "12"
