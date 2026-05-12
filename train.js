@@ -135,8 +135,14 @@
 
 // MIT ALGORITHM TASK G  
 
-function getHighestIndex(arr) {
-  const max = Math.max(...arr);
-  return arr.indexOf(max);
-}
-console.log(getHighestIndex([5, 21, 12, 21, 8]));
+// function getHighestIndex(arr) {
+//   const max = Math.max(...arr);
+//   return arr.indexOf(max);
+// }
+// console.log(getHighestIndex([5, 21, 12, 21, 8]));
+
+// MIT ALGORITHM TASK H-TASK
+
+// Shunday function tuzing, u integerlardan iborat arrayni argument sifatida qabul qilib, 
+// faqat positive qiymatlarni olib string holatda return qilsin. 
+// MASALAN: getPositive([1, -4, 2]) return qiladi "12".

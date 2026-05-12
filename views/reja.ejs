@@ -1,81 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Reja</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
-      crossorigin="anonymous"
-    />
-  </head>
-
-  <body style="background-color: #b8bbd1">
+    <title>REJA</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous" />
+</head>
+<body style="background-color: #b8bbd1;">
     <div class="container">
-      <h1 class="display-4 text-center py-1">REJA VA MAQSADLAR</h1>
-
-      <div class="bg-light rounded-3 p-3 shadow-sm">
-        <form id="create-form" action="/create-item" method="POST">
-          <div class="d-flex align-items-center">
-            <input
-              id="create-field"
-              name="reja"
-              autofocus
-              autocomplete="off"
-              class="form-control me-3"
-              type="text"
-              style="flex: 1"
-            />
-            <button
-              type="submit"
-              class="btn btn-primary"
-              style="border-radius: 20px"
-            >
-              Yangi Reja Qoshish
-            </button>
-          </div>
-        </form>
-      </div>
-
-      <ul id="item-list" class="list-group pb-5 mt-3">
-        <% items.map(function(item){ %>
-        <li
-          class="list-group-item list-group-item-info d-flex align-items-center justify-content-between"
-        >
-          <span class="item-text"><%=item.reja%></span>
-          <div>
-            <button
-              data-id="<%=item._id%>"
-              class="edit-me btn btn-secondary btn-sm mr-1"
-            >
-              Ozgartirish
-            </button>
-            <!-- ✅ delete one item form -->
-            <form action="/delete-item" method="POST" style="display: inline">
-              <input type="hidden" name="id" value="<%=item._id%>" />
-              <button type="submit" class="btn btn-danger btn-sm">
-                Ochirish
-              </button>
+        <h1 style="text-align: center;" class="display-4 text-center py-1"> REJA va MAQSADLAR</h1>
+        <div style="text-align: center;" class="jumbotron p-3 shadow-sm">
+            <form id="create-form" action="/create-item" method="POST">
+                <div class="d-flex align-items-center">
+                    <input id="create-field" name="reja" autofocus autocomplete="off" class="form-control mr-3"
+                        type="text" style="flex: 1" />
+                    <button class="btn btn-primary" style="border-radius: 20px">
+                        Yangi Reja Qurish
+                    </button>
+                </div>
             </form>
-          </div>
-        </li>
-        <% }) %>
-      </ul>
-    </div>
+        </div>
+       
+   <ul id="item-list" class="list-group pb-5">
+            <% items.map(function(item) { %>
+                <li class="list-group-item list-group-item-info d-flex align-items-center justify-content-between">
+                    <span class="item-text">
+                        <%=item.reja%>
+                    </span>
+                    <div>
+                        <button data-id="<%=item._id%>" class="edit-me btn btn-secondary btn-sm mr-1">
+                            Ozgartirish
+                        </button>
+                        <button data-id="<%=item._id%>" class="delete-me btn btn-danger btn-sm">Ochirish</button>
+                    </div>
+                </li>
+                <% }) %>
+        </ul>
 
-    <!-- ✅ delete all items form -->
-    <div class="text-center mt-3 mb-5">
-      <form action="/delete-all" method="POST">
-        <button
-          type="submit"
-          class="btn btn-danger"
-          style="border-radius: 20px"
-        >
-          Hamma Rejalarni Ochirish
+        <button id="clean-all" class="btn btn-danger" style="border-radius: 20px">
+            Hammasini Rejalarni O'chirish
         </button>
-      </form>
+
     </div>
-  </body>
+    <script src="https://unpkg.com/axios@1.13.2/dist/axios.min.js"></script>
+    <script src="/browser.js"></script>
+</body>
 </html>

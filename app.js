@@ -1,73 +1,72 @@
-console.log("Web Serverni boshlash");
+console.log("Web serverni boshlash");
 const express = require("express");
-const { ObjectId } = require("mongodb"); // ✅ needed to delete by ID
 const app = express();
 
-// 1: Kirish code
+// MongoDB chaqirish
+
+const db = require("./server").db();
+const mongodb = require("mongodb");
+// 1 Starting code
 app.use(express.static("public"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// 2: Session code
+// 2 Sessionn codelar uchun
+// 3 Views code
 
-// 3: Views code
 app.set("views", "views");
 app.set("view engine", "ejs");
 
-// 4: Routing code
-app.post("/create-item", async (req, res) => {
-  console.log("user entered /create-item");
-  try {
-    const db = req.app.locals.db;
-    const new_reja = req.body.reja;
-    console.log("Adding item:", new_reja);
-    await db.collection("plans").insertOne({ reja: new_reja });
-    res.redirect("/");
-  } catch (err) {
-    console.log("❌ create-item error:", err.message);
-    res.end("something went wrong: " + err.message);
-  }
-});
-
-// ✅ Delete one item
-app.post("/delete-item", async (req, res) => {
-  console.log("user entered /delete-item");
-  try {
-    const db = req.app.locals.db;
-    await db.collection("plans").deleteOne({ _id: new ObjectId(req.body.id) });
-    console.log("✅ Item deleted");
-    res.redirect("/");
-  } catch (err) {
-    console.log("❌ delete-item error:", err.message);
-    res.end("something went wrong: " + err.message);
-  }
-});
-
-// ✅ Delete all items
-app.post("/delete-all", async (req, res) => {
-  console.log("user entered /delete-all");
-  try {
-    const db = req.app.locals.db;
-    await db.collection("plans").deleteMany({});
-    console.log("✅ All items deleted");
-    res.redirect("/");
-  } catch (err) {
-    console.log("❌ delete-all error:", err.message);
-    res.end("something went wrong: " + err.message);
-  }
-});
-
-app.get("/", async (req, res) => {
+//4 Routing code
+app.get("/", function (req, res) {
   console.log("user entered /");
-  try {
-    const db = req.app.locals.db;
-    const data = await db.collection("plans").find().toArray();
-    console.log("✅ Data from DB:", data);
-    res.render("reja", { items: data });
-  } catch (err) {
-    console.log("❌ GET / error:", err.message);
-    res.end("something went wrong: " + err.message);
-  }
+  db.collection("plans")
+    .find()
+    .toArray((err, data) => {
+      if (err) {
+        console.log(err);
+        res.end("Something went wrong");
+      } else {
+        res.render("reja", { items: data });
+      }
+    });
 });
 
+app.post("/create-item", (req, res) => {
+  console.log("user entered /create-item");
+  const new_reja = req.body.reja;
+  db.collection("plans").insertOne({ reja: new_reja }, (err, data) => {
+    console.log(data.ops);
+    res.json(data.ops[0]);
+  });
+});
+app.post("/delete-item", (req, res) => {
+  const id = req.body.id;
+  db.collection("plans").deleteOne(
+    { _id: new mongodb.ObjectId(id) },
+    function (err, data) {
+      res.json({ state: "success" });
+    },
+  );
+});
+
+app.post("/edit-item", (req, res) => {
+  const data = req.body;
+  console.log(data);
+  db.collection("plans").findOneAndUpdate(
+    { _id: new mongodb.ObjectId(data.id) },
+    { $set: { reja: data.new_input } },
+    function (err, data) {
+      res.json({ state: "succes" });
+    },
+  );
+});
+
+app.post("/delete-all", (req, res) => {
+  if (req.body.delete_all) {
+    db.collection("plans").deleteMany(function () {
+      res.json({ state: "Hamma rejalar ochirilsin" });
+    });
+  }
+});
 module.exports = app;
