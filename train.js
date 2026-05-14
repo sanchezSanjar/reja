@@ -143,9 +143,31 @@
 
 // MIT ALGORITHM TASK H-TASK
 
-function getPositive(arr) {
-  return arr.filter(num => num > 0).join('');
+// function getPositive(arr) {
+//   return arr.filter(num => num > 0).join('');
+// }
+
+// // Test
+// console.log(getPositive([1, -4, 2]));      // "12"
+
+// MIT ALGORITHM TASK I-TASK
+
+function majorityElement(arr) {
+  let count = {};
+  let maxCount = 0;
+  let result;
+
+  for (let num of arr) {
+    count[num] = (count[num] || 0) + 1;
+
+    if (count[num] > maxCount) {
+      maxCount = count[num];
+      result = num;
+    }
+  }
+
+  return result;
 }
 
 // Test
-console.log(getPositive([1, -4, 2]));      // "12"
+console.log(majorityElement([1, 2, 3, 4, 5, 4, 3, 4])); // 4
