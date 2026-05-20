@@ -174,20 +174,32 @@
 
 // MIT ALGORITHM TASK - J
 
-function findLongestWord(text) {
-    let words = text.split(" ");
+// function findLongestWord(text) {
+//     let words = text.split(" ");
     
-    let longest = "";
+//     let longest = "";
 
-    for (let word of words) {
-        if (word.length > longest.length) {
-            longest = word;
-        }
-    }
+//     for (let word of words) {
+//         if (word.length > longest.length) {
+//             longest = word;
+//         }
+//     }
 
-    return longest;
+//     return longest;
+// }
+
+// MIT ALGORITHM TASK - K
+
+console.log(findLongestWord("I come from Uzbekistan"));
+
+
+function countVowels(str) {
+  const vowels = "aeiouAEIOU";
+  let count = 0;
+  for (let char of str) {
+    if (vowels.includes(char)) count++;
+  }
+  return count;
 }
 
-
-// TEST
-console.log(findLongestWord("I come from Uzbekistan"));
+console.log(countVowels("string")); // 1
